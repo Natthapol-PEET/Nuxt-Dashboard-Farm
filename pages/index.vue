@@ -1,27 +1,69 @@
 <template>
-	<div class="container">
+	<div class="container text-center">
 		<div class="card shadow">
 			<div class="card-body">
-				<h1>Hello world!</h1>
-				<p class="lead">A ready to go boilerplate with some modifications to bootstrap and ready to go recommended modules.</p>
-				<p>Lazy components with <a href="https://github.com/aFarkas/lazysizes">lazysizes</a> use <code>LazyImg</code> or <code>lazy-img</code> and <code>LazyEmbed</code> or <code>lazy-embed</code> for embeds (ratio-16x9 by default), check the components for props.</p>
-				<div class="row text-center">
-					<div class="col">
-						<LazyImg class="img-fluid" src="https://images.pexels.com/photos/210205/pexels-photo-210205.jpeg" alt="Seashore Under White and Blue Sky during Sunset" />
-						<a class="btn btn-link text-muted small" href="https://www.pexels.com/es-es/foto/seashore-bajo-cielo-blanco-y-azul-durante-la-puesta-de-sol-210205/">Seashore Under White and Blue Sky during Sunset</a>
+
+				<!-- Header -->
+				<div class="row align-items-start">
+					<div class="col-2">
+						<Logo />
 					</div>
 					<div class="col">
-						<LazyEmbed style="--bs-aspect-ratio: 66.5%;" ratio="custom" src="https://www.youtube.com/embed/Y1y9GAjuSt8" title="(8 Hours) 4K Campfire On Beach - Crackling Fire with Ocean Waves Sounds" />
+						<h2>Name farm</h2>
 					</div>
 				</div>
-			</div>
-			<div class="card-footer bg-transparent border-top py-3">
-				<p class="text-muted m-0">Made with ❤️ by <a href="https://derianandre.com/">DerianAndre</a></p>
-			</div>
 
-			
-			
-			
+				<!-- Content -->
+				<div class="row align-items-start">
+					<div class="col">
+						<Main />
+					</div>
+					<div class="col">
+						<h2>{{ dateTime }}</h2>
+					</div>
+				</div>
+				
+			</div>
 		</div>
 	</div>
 </template>
+
+
+<script>
+export default {
+	data() {
+		return {
+			dateTime: null,
+			polling: null
+		}
+	},
+	methods: {
+		currentDateTime() {
+			const current = new Date();
+			const date = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate();
+			const time = current.getHours() + ":" + current.getMinutes();
+			const dateTime = date + ' ' + time;
+			return dateTime;
+		}
+	},
+	created() {
+		this.polling = setInterval(() => {
+			this.dateTime = this.currentDateTime()
+		}, 1000)
+	},
+	beforeDestroy() {
+		clearInterval(this.polling)
+	}
+};
+</script>
+
+<style scoped>
+#logo {
+	float: left;
+}
+
+#name {
+	float: left;
+
+}
+</style>
