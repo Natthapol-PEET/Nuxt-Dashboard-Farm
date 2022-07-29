@@ -1,27 +1,20 @@
 <template>
 	<div class="container text-center">
-		<div class="card shadow">
+		<div class="card shadow" style="width: 950px; height: 590px;">
 			<div class="card-body">
 
 				<!-- Header -->
-				<div class="row align-items-start">
+				<div class="row align-items-start header">
 					<div class="col-2">
 						<Logo />
 					</div>
 					<div class="col">
-						<h2>Name farm</h2>
+						<b style="font-size:48px">นันธิดา บ้านสวนฟาร์ม</b>
 					</div>
 				</div>
 
 				<!-- Content -->
-				<div class="row align-items-start">
-					<div class="col">
-						<Main />
-					</div>
-					<div class="col">
-						<h2>{{ dateTime }}</h2>
-					</div>
-				</div>
+				<Content />
 				
 			</div>
 		</div>
@@ -29,41 +22,11 @@
 </template>
 
 
-<script>
-export default {
-	data() {
-		return {
-			dateTime: null,
-			polling: null
-		}
-	},
-	methods: {
-		currentDateTime() {
-			const current = new Date();
-			const date = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate();
-			const time = current.getHours() + ":" + current.getMinutes();
-			const dateTime = date + ' ' + time;
-			return dateTime;
-		}
-	},
-	created() {
-		this.polling = setInterval(() => {
-			this.dateTime = this.currentDateTime()
-		}, 1000)
-	},
-	beforeDestroy() {
-		clearInterval(this.polling)
-	}
-};
-</script>
 
 <style scoped>
-#logo {
-	float: left;
+.header{
+	padding-top: 10px;
 }
 
-#name {
-	float: left;
 
-}
 </style>
