@@ -1,5 +1,4 @@
 <template>
-
     <ul class="list-group content">
         <li class="list-group-item d-flex justify-content-between align-items-center font-list">
             วันและเวลา
@@ -22,8 +21,6 @@
             <span class="badge bg-primary rounded-pill font-list">{{ ec }}</span>
         </li>
     </ul>
-
-
 </template>
 
 

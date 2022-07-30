@@ -23,7 +23,6 @@
 
 
 <script>
-'use strict';
 import mqtt from 'mqtt';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -105,8 +104,6 @@ export default {
 	beforeDestroy() { }
 };
 </script>
-
-
 
 
 <style scoped>
