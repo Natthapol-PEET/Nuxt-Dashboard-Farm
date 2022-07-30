@@ -28,7 +28,8 @@
 
 
 <script>
-import mqtt from 'mqtt'
+import mqtt from 'mqtt';
+import { v4 as uuidv4 } from 'uuid';
 
 export default {
     data() {
@@ -47,7 +48,7 @@ export default {
                 connectTimeout: 4000, // Time out
                 reconnectPeriod: 4000, // Reconnection interval
                 // Certification Information
-                clientId: 'nuxtjs_jetson_nano_farm',
+                clientId: `nuxtjs_jetson_nano_farm-${uuidv4()}`,
                 username: '',
                 password: '',
             },
