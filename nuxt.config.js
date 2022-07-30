@@ -1,8 +1,12 @@
 export default {
 	// Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
-	ssr: false,
+	ssr: true,
 	// Target: https://go.nuxtjs.dev/config-target
 	target: 'static',
+	buildDir: 'nuxt-dist',
+	generate: {
+		fallback: true
+	},
 	// Server
 	server: {
 		host: '0.0.0.0'
@@ -76,7 +80,7 @@ export default {
 			},
 			scss: {
 				implementation: require('sass')
-			}
+			},
 		}
 	}
 }
