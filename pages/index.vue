@@ -22,16 +22,15 @@
 </template>
 
 
-
-
 <script>
+'use strict';
 import mqtt from 'mqtt';
 import { v4 as uuidv4 } from 'uuid';
 
 export default {
 	data() {
 		return {
-			payloadMessage: "a a a a a",
+			payloadMessage: '',
 			connection: {
 				host: 'broker.emqx.io',
 				port: 8083,
@@ -83,7 +82,7 @@ export default {
 				console.log(`Received message ${message} from topic ${topic}`)
 
 				if (topic == "plant/dashboard/value") {
-					this.payloadMessage = new TextDecoder().decode(message);
+					this.payloadMessage = message.toString();
 				}
 			})
 		},

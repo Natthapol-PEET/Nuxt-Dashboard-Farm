@@ -32,16 +32,27 @@ export default {
     props: {
         payloadMessage: String,
     },
+    watch: {
+        payloadMessage: {
+            immediate: true,
+            deep: true,
+            handler(newValue, oldValue) {
+                var arrystr = newValue.split(" ")
+                this.temp = arrystr[1]
+                this.hum = arrystr[2]
+                this.co2 = arrystr[3]
+                this.ec = arrystr[4]
+            }
+        }
+    },
     data() {
-        var arrystr = this.payloadMessage.split(" ")
-
         return {
             dateTime: null,
             polling: null,
-            temp: arrystr[1],
-            hum: arrystr[2],
-            co2: arrystr[3],
-            ec: arrystr[4],
+            temp: 0,
+            hum: 0,
+            co2: 0,
+            ec: 0,
         };
     },
     methods: {
