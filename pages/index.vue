@@ -14,7 +14,8 @@
 				</div>
 
 				<!-- Content -->
-				<Content :payload-message="payloadMessage" />
+				<Content v-if="isPage == 0" :payload-message="payloadMessageSensor" />
+				<PreviewImage v-if="isPage == 1" :item="payloadMessageImage" />
 
 			</div>
 		</div>
@@ -29,23 +30,36 @@ import { v4 as uuidv4 } from 'uuid';
 export default {
 	data() {
 		return {
-			payloadMessage: '',
+			isPage: 0,
+			payloadMessageSensor: '',
+			payloadMessageImage: {
+				"status": "end",
+				"originalImage": "",
+				"ndviImage": "",
+			},
 			connection: {
-				host: 'broker.emqx.io',
+				// host: 'broker.emqx.io',
+				host: '192.168.1.104',
 				port: 8083,
 				endpoint: '/mqtt',
 				clean: true, // Reserved session
 				connectTimeout: 4000, // Time out
 				reconnectPeriod: 4000, // Reconnection interval
 				// Certification Information
-				clientId: `nuxtjs_jetson_nano_farm-${uuidv4()}`,
+				clientId: `nuxtjs_farm_${uuidv4()}`,
 				username: '',
 				password: '',
 			},
-			subscription: {
-				topic: 'plant/dashboard/value',
-				qos: 0,
-			},
+			subscription: [
+				{
+					topic: 'plant/dashboard/value',
+					qos: 0,
+				},
+				{
+					topic: 'plant/dashboard/image',
+					qos: 0,
+				},
+			],
 			receiveNews: '',
 			client: {
 				connected: false,
@@ -78,23 +92,38 @@ export default {
 			})
 			this.client.on('message', (topic, message) => {
 				this.receiveNews = this.receiveNews.concat(message)
-				console.log(`Received message ${message} from topic ${topic}`)
+				// console.log(`Received message ${message} from topic ${topic}`)
 
 				if (topic == "plant/dashboard/value") {
-					this.payloadMessage = message.toString();
+					this.payloadMessageSensor = message.toString();
+				}
+				else if (topic == "plant/dashboard/image") {
+					const jsonString = Buffer.from(message)
+					const parseData = JSON.parse(jsonString)
+					this.payloadMessageImage = parseData
+
+					if (parseData.status == 'end') {
+						setTimeout(() => {
+							this.isPage = 0
+						}, 5000)
+					}else{
+						this.isPage = 1
+					}
 				}
 			})
 		},
 		doSubscribe() {
-			const { topic, qos } = this.subscription
-			this.client.subscribe(topic, { qos }, (error, res) => {
-				if (error) {
-					console.log('Subscribe to topics error', error)
-					return
-				}
-				this.subscribeSuccess = true
-				console.log('Subscribe to topics res', res)
-			})
+			var qos = 0;
+			this.subscription.forEach((sub) => {
+				this.client.subscribe(sub.topic, { qos }, (error, res) => {
+					if (error) {
+						console.log('Subscribe to topics error', error)
+						return
+					}
+					this.subscribeSuccess = true
+					console.log('Subscribe to topics res', res)
+				})
+			});
 		},
 	},
 	created() {

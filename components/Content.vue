@@ -35,10 +35,10 @@ export default {
             deep: true,
             handler(newValue, oldValue) {
                 var arrystr = newValue.split(" ")
-                this.temp = arrystr[1]
-                this.hum = arrystr[2]
-                this.co2 = arrystr[3]
-                this.ec = arrystr[4]
+                this.temp = arrystr[4]
+                this.hum = arrystr[3]
+                this.co2 = arrystr[1]
+                this.ec = arrystr[2]
             }
         }
     },
