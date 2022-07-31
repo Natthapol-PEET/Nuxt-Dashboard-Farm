@@ -2,12 +2,10 @@
     <div class="container text-center top-img-box">
         <div class="row align-items-start">
             <div class="col">
-                <img v-if="originalImage == ''" id="img-size" src="~assets/img/tree-736885__480.jpg">
                 <img v-if="originalImage != ''" id="img-size" :src="'data:image/jpeg;base64,' + originalImage">
                 <h3 class="top-text-box">Original</h3>
             </div>
             <div class="col">
-                <img v-if="ndviImage == ''" id="img-size" src="~assets/img/tree-736885__480.jpg">
                 <img v-if="ndviImage != ''" id="img-size" :src="'data:image/jpeg;base64,' + ndviImage">
                 <h3 class="top-text-box">NDVI</h3>
             </div>
@@ -45,11 +43,9 @@ export default {
 .top-text-box {
     padding-top: 20px;
 }
-
 .top-img-box {
     padding-top: 30px;
 }
-
 #img-size {
     width: 400px;
     height: 300px;

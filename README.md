@@ -4,6 +4,27 @@ A simple ready-to-go boilerplate boilerplate with some modifications.
 [Bootstrap 5](https://github.com/twbs/bootstrap)
 [Bootstrap Icons](https://github.com/twbs/icons)
 
+## Versions
+```json
+{
+  "bootstrap": "^5.1.3",
+  "bootstrap-icons": "^1.9.1",
+  "nuxt": "^2.15.8"
+}
+```
+
+## Extras
+```json
+{
+  "@nuxt/content": "^1.14.0",
+  "@nuxtjs/pwa": "^3.3.5",
+  "@nuxtjs/robots": "^2.5.0",
+  "@nuxtjs/sitemap": "^2.4.0",
+  "core-js": "^3.15.2",
+  "lazysizes": "^5.3.2",
+}
+```
+
 ## Build Setup
 ```bash
 # install dependencies

@@ -1,19 +1,24 @@
+// const main_base_URL =  'https://brojenuel-blog.ml';
+const main_base_URL =  'http://localhost';
+
 export default {
 	// Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
 	ssr: true,
 	// Target: https://go.nuxtjs.dev/config-target
-	target: 'static',
-	buildDir: 'nuxt-dist',
-	generate: {
-		fallback: true
-	},
+	target: 'server',
 	// Server
 	server: {
 		host: '0.0.0.0'
 	},
+	sitemap: {
+		hostname: main_base_URL,
+		env: {
+			main_base_URL
+		},
+	},
 	// Global page headers: https://go.nuxtjs.dev/config-head
 	head: {
-		title: 'Plant-Farm',
+		title: 'Farm Dashboard',
 		meta: [
 			{ charset: 'utf-8' },
 			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -80,7 +85,7 @@ export default {
 			},
 			scss: {
 				implementation: require('sass')
-			},
+			}
 		}
 	}
 }

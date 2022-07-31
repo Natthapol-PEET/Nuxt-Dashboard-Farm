@@ -74,7 +74,7 @@ export default {
 </script>
 
 
-<style scoped>
+<style>
 .content {
     padding: 30px 30px 30px 30px;
 }

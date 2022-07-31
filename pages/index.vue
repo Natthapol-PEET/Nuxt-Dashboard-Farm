@@ -6,7 +6,7 @@
 				<!-- Header -->
 				<div class="row align-items-start header">
 					<div class="col-2">
-						<Logo />
+						<Logoku />
 					</div>
 					<div class="col">
 						<b style="font-size:48px">นันธิดา บ้านสวนฟาร์ม</b>
@@ -135,7 +135,7 @@ export default {
 </script>
 
 
-<style scoped>
+<style>
 .header {
 	padding-top: 10px;
 }
