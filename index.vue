@@ -102,12 +102,12 @@ export default {
 					const parseData = JSON.parse(jsonString)
 					this.payloadMessageImage = parseData
 
-					this.isPage = 1
-
 					if (parseData.status == 'end') {
 						setTimeout(() => {
 							this.isPage = 0
 						}, 5000)
+					}else{
+						this.isPage = 1
 					}
 				}
 			})
