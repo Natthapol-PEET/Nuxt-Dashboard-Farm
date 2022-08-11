@@ -1,6 +1,6 @@
 <template>
-	<div class="container text-center">
-		<div class="card shadow" style="width: 950px; height: 590px;">
+	<div class="center">
+		<div class="card shadow" style="width: 1200px; height: 700px;">
 			<div class="card-body">
 
 				<!-- Header -->
@@ -107,7 +107,7 @@ export default {
 					if (parseData.status == 'end') {
 						setTimeout(() => {
 							this.isPage = 0
-						}, 5000)
+						}, 10000)
 					}
 				}
 			})
@@ -130,7 +130,8 @@ export default {
 		// init mqtt
 		this.createConnection()
 	},
-	beforeDestroy() { }
+	beforeDestroy() { },
+	
 };
 </script>
 
@@ -138,5 +139,11 @@ export default {
 <style>
 .header {
 	padding-top: 10px;
+}
+
+.center {
+  margin: auto;
+  /* width: 50%; */
+  /* padding: 10px; */
 }
 </style>

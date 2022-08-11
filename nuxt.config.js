@@ -56,7 +56,10 @@ export default {
 		'@nuxtjs/robots',
 		// https://sitemap.nuxtjs.org/
 		'@nuxtjs/sitemap',
+		// https://www.devahoy.com/tutorials/nuxtjs-fundamental/data-fetching
+		'@nuxtjs/axios',
 	],
+	axios: {},
 	// Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
 	buildModules: [
 
