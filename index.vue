@@ -9,7 +9,7 @@
 						<Logoku />
 					</div>
 					<div class="col">
-						<b style="font-size:48px">นันธิดา บ้านสวนฟาร์ม</b>
+						<b style="font-size:48px">Agrictakuse</b>
 					</div>
 				</div>
 
